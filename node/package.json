@@ -1,0 +1,10 @@
+{
+  "name": "hello_node_arduino",
+  "version": "0.0.0",
+  "description": "",
+  "main": "main.js",
+  "dependencies": {
+    "serialport": "~1.2.5"
+  },
+  "devDependencies": {},
+}
