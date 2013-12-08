@@ -36,11 +36,11 @@ var Grua = function() {
   };
 
   this.loadUp = function() {
-    this.eval('arm.up');
+    this.eval('load.up');
   };
 
   this.loadDown = function() {
-    this.eval('arm.down');
+    this.eval('load.down');
   };  
 
   this.eval = function(command) {

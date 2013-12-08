@@ -57,13 +57,13 @@ void armUp() {
   }
 }
 
-void loadUp() {
+void loadDown() {
   motor.run(FORWARD|RELEASE);
   delay(3000);
   motor.run(BRAKE);
 }
 
-void loadDown() {
+void loadUp() {
   motor.run(BACKWARD|RELEASE);
   delay(1000);
   motor.run(BRAKE);
