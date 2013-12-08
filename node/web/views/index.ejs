@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/bootstrap.min.css' />
+    <link rel='stylesheet' href='/stylesheets/signin.css' />
+  </head>
+  <body>
+    <div class="container">
+
+      <form class="form-signin" role="form">
+        <h2 class="form-signin-heading">Grúa</h2>
+        <input type="text" class="form-control" id="command" placeholder="Comando">
+        <button class="btn btn-lg btn-primary btn-block">Executar</button>
+      </form>
+
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/javascripts/jquery-2.0.3.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      var socket = io.connect();
+
+      $(document).ready(function() {
+        $('form').submit(function(event) {
+          event.preventDefault();
+          socket.emit('grua', $('#command').val());
+          $('#command').val('');
+        })
+      });
+    </script>
+  </body>
+</html>
