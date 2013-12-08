@@ -4,20 +4,18 @@ var Grua = require('./grua.js');
 var grua = new Grua();
 
 grua.open(function() {
-  rl = readline.createInterface(process.stdin, process.stdout);
-  rl.setPrompt('grua> ');
-  rl.prompt();
+  readLine = readline.createInterface(process.stdin, process.stdout);
+  readLine.setPrompt('grua> ');
+  readLine.prompt();
   
-  rl.on('line', function(line) {
+  readLine.on('line', function(line) {
     var command = line.trim();
-    if (command == "l") {
-      grua.left();
-    } else if (command == "r") {
-      grua.right();
-    } else if (command == "q") {
-      rl.close();
+    if (command == "q") {
+      readLine.close();
+    } else {
+      grua.eval(command);
     }
-    rl.prompt();
+    readLine.prompt();
   }).on('close', function() {
     grua.close(function () {
       process.exit(0);

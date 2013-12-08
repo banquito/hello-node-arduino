@@ -10,8 +10,13 @@ var Grua = function() {
     flowControl: false
   });
 
+  port.on('error', function(err) {
+    console.log(err);
+  });
+
   this.open = function(cb) {
     port.open(function(err) {
+      if (err) console.log(err);
       cb(err)
     });
   };
@@ -22,13 +27,25 @@ var Grua = function() {
     });
   };
 
-  this.left = function() {
-    port.write('9');
+  this.armUp = function() {
+    this.eval('arm.up');
   };
 
-  this.right = function() {
-    port.write('0');
+  this.armDown = function() {
+    this.eval('arm.down');
   };
+
+  this.loadUp = function() {
+    this.eval('arm.up');
+  };
+
+  this.loadDown = function() {
+    this.eval('arm.down');
+  };  
+
+  this.eval = function(command) {
+    port.write(command + '\n');
+  };  
 };
 
 module.exports = Grua;
